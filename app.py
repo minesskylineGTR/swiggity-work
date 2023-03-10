@@ -1,4 +1,4 @@
-from Scripts import WorkWeek, Automation, mileageReport
+from Scripts import WorkWeek, Automation, Mileage
 
 def main():
     print('HelloWorld!')
@@ -8,7 +8,7 @@ if __name__ == "__main__":
 
 def clean():
     WorkWeek()
-    mileageReport()
+    Mileage()
 
 def Selen():
     Automation()
