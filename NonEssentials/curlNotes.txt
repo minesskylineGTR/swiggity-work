@@ -1,0 +1,23 @@
+#take curl and make post requests against the endpoint that's going to accept this data and see if it works
+#look up how to make a post request x-post, headers, content type, pass in username and pw, and they're gonna have an endpoint
+#from your shell, set env-var 
+#from terminal, export username=ChrisNguyen11, export password=******, then echo $username, $password for security reasons
+#https://curl.se/docs/manual.html <-- curl manual for login and cookies and stuffs
+
+curl --cookie "APXPSHRPRDDMZ-8003-PORTAL-PSJSESSIONID=r4WMhJNv8gKysIzzQ5MMBoUP8i24cC3e" -L -u username:password https://myapex.apexsystemsinc.com/psc/MYAPEX/CONTRACTOR/HRMS/?cmd=login --verbose --max-redirs 5 --post302 -H "User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36" 
+# ":" references all objects in a list
+#all of the columns
+#count number of columns
+
+#lots of try and except and unit tests (Does the data returned match the scheme you expect? Does it always have a standard format?)
+#unit tests makes sure the data you're working with is going to be consistent and passes a check before edits
+#print(df.loc[:, ['EmployeeID', 'someothercolumn', 'mycolumn']])
+#column_list = list(df)
+
+#lambda
+#column_map = {work_columns[i]: column_list[i] for i in range(len(work_columns))}
+
+#for k,v in column_map.items():
+#    print(k,v)
+
+#print(df.loc[:, 'EmployeeID'])
