@@ -4,8 +4,14 @@ from pandas import DataFrame as df
 from pandas.tseries.offsets import DateOffset
 from collections import Counter
 import collections
+import argparse
 
-mileage = pd.read_excel('../../production.xlsx', sheet_name='Sheet1')
+parser = argparse.ArgumentParser()
+parser.add_argument("-e", "--excelfile")
+parser.add_argument("-s", "--sheet")
+args = parser.parse_args()
+
+mileage = pd.read_excel(args.excelfile, sheet_name=args.sheet)
 df = pd.DataFrame(mileage)
 
 df.insert(0, 'ExpenseEntry', '')
@@ -30,13 +36,13 @@ while i < numrows:
     
 
     #you just finished your first shift, now you gotta book it to the next agent's office
-    if time is "'09:00:00":
-         if date == date.shift(periods=1) and time.shift(periods=1) is "'13:00:00":
+    if time == "'09:00:00":
+         if date == date.shift(periods=1) and time.shift(periods=1) == "'13:00:00":
             i = i + 1 
             df.at[i, {df.ExpenseEntry}] = "{name}+' ('+{id}+') to '+""{name.shift(periods=1)}+'( '+id.shift(periods=1)"+')'' '+{miles}+' miles-'+{allowance}+' miles='+{diff}+' miles'
     #You're at your 1pm job, last one of the day. your next job doesn't start til tomorrow
-    if time is "'13:00:00":
-        if date != date.shift(periods=1) or time.shift(periods=1) is "'09:00:00":
+    if time == "'13:00:00":
+        if date != date.shift(periods=1) or time.shift(periods=1) == "'09:00:00":
             i = i + 1 
             df.at[i, df.ExpenseEntry] = "{name}+' ('+{id}+') to Home '+{miles}+' miles-'+{allowance}+' miles='+{diff}+' miles'"
     
